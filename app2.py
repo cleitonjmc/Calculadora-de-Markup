@@ -90,7 +90,7 @@ if st.button("Calcular Markup e Preço de Venda"):
         else:
             margem_contribuicao_perc = (margem_contribuicao_unit / preco_venda_unit) * 100
             ponto_equilibrio_unid = custo_fixo_total / margem_contribuicao_unit
-            ponto_equilibrio_valor = int(ponto_equilibrio_unid) * round(preco_venda_unit,2)
+            ponto_equilibrio_valor = round(ponto_equilibrio_unid,2) * round(preco_venda_unit,2)
 
             st.success("✅ Cálculo do ponto de equilíbrio realizado com sucesso!")
 
@@ -100,8 +100,9 @@ if st.button("Calcular Markup e Preço de Venda"):
             with colE:
                 st.metric("Margem de Contribuição (%)", f"{round(margem_contribuicao_perc,2)}%")
             with colF:
-                st.metric("Ponto de Equilíbrio (Unidades)", f"{int(ponto_equilibrio_unid)}")
+                st.metric("Ponto de Equilíbrio (Unidades)", f"{round(ponto_equilibrio_unid,2)}")
 
             st.write(f"**Ponto de Equilíbrio (R$):** R$ {format_currency(ponto_equilibrio_valor)}")
     else:
         st.info("👉 Informe o valor dos custos fixos totais para calcular o ponto de equilíbrio.")
+
